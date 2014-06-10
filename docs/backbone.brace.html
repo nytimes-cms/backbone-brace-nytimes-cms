@@ -556,7 +556,7 @@ E.g., <code>[ &#39;string&#39; ]</code> assumes <code>Array</code> because you c
                     <span class="hljs-keyword">var</span> mixinDefaults = mixin[key];
                     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> id <span class="hljs-keyword">in</span> mixinDefaults) {
                         <span class="hljs-keyword">if</span> (defaults.hasOwnProperty(id)) {
-                            <span class="hljs-keyword">throw</span> <span class="hljs-string">"Mixin error: class already has default '"</span> + id + <span class="hljs-string">"' defined"</span>;
+                            console.warn(<span class="hljs-string">"Mixin error: class already has default '"</span> + id + <span class="hljs-string">"' defined for "</span> + <span class="hljs-keyword">this</span>.cid);
                         }
                         defaults[id] = mixinDefaults[id];
                     }
@@ -635,7 +635,7 @@ E.g., <code>[ &#39;string&#39; ]</code> assumes <code>Array</code> because you c
             </div>
             
             <div class="content"><div class='highlight'><pre>                <span class="hljs-keyword">if</span> (proto.hasOwnProperty(key)) {
-                    <span class="hljs-keyword">throw</span> <span class="hljs-string">"Mixin error: class already has property '"</span> + key + <span class="hljs-string">"' defined"</span>;
+                    console.warn(<span class="hljs-string">"Mixin error: class already has default '"</span> + key + <span class="hljs-string">"' defined for "</span> + <span class="hljs-keyword">this</span>.cid);
                 }
                 proto[key] = mixin[key];
             }, <span class="hljs-keyword">this</span>);
@@ -933,7 +933,7 @@ A getter and setter for <code>id</code> is always generated.</p>
                     <span class="hljs-keyword">continue</span>;
                 }
                 <span class="hljs-keyword">if</span> (!_.has(attributes, attr)) {
-                    <span class="hljs-keyword">throw</span> <span class="hljs-string">"Attribute '"</span> + attr + <span class="hljs-string">"' does not exist"</span>;
+                    console.warn(<span class="hljs-string">"Attribute '"</span> + attr + <span class="hljs-string">"' does not exist for "</span> + <span class="hljs-keyword">this</span>.cid);
                 }
                 attrs[attr] = ensureType(attributes[attr], attrs[attr]);
             }
@@ -944,7 +944,7 @@ A getter and setter for <code>id</code> is always generated.</p>
         <span class="hljs-keyword">var</span> oldGet = proto.get;
         childProto.get = <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(attr)</span> {</span>
             <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.namedAttributes &amp;&amp; !_.has(<span class="hljs-keyword">this</span>.namedAttributes, attr)) {
-                <span class="hljs-keyword">throw</span> <span class="hljs-string">"Attribute '"</span> + attr + <span class="hljs-string">"' does not exist"</span>;
+                console.warn(<span class="hljs-string">"Attribute '"</span> + attr + <span class="hljs-string">"' does not exist for "</span> + <span class="hljs-keyword">this</span>.cid);
             }
             <span class="hljs-keyword">return</span> oldGet.apply(<span class="hljs-keyword">this</span>, <span class="hljs-built_in">arguments</span>);
         };
@@ -1038,6 +1038,9 @@ A getter and setter for <code>id</code> is always generated.</p>
     });
     Evented.extend = Backbone.Model.extend;
     Brace.Evented = applyExtensions(Evented);
+
+    Backbone.View = Brace.View;
+    Backbone.Router = Brace.Router;
 
 }());</pre></div></div>
             

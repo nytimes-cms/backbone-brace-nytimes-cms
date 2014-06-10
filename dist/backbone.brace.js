@@ -283,7 +283,7 @@
                     var mixinDefaults = mixin[key];
                     for (var id in mixinDefaults) {
                         if (defaults.hasOwnProperty(id)) {
-                            throw "Mixin error: class already has default '" + id + "' defined";
+                            console.warn("Mixin error: class already has default '" + id + "' defined for " + this.cid);
                         }
                         defaults[id] = mixinDefaults[id];
                     }
@@ -311,7 +311,7 @@
                 }
                 // Name collisions with other mixins or or the object we're mixing into result in violent and forceful disapproval.
                 if (proto.hasOwnProperty(key)) {
-                    throw "Mixin error: class already has property '" + key + "' defined";
+                    console.warn("Mixin error: class already has default '" + key + "' defined for " + this.cid);
                 }
                 proto[key] = mixin[key];
             }, this);
@@ -471,7 +471,7 @@
                     continue;
                 }
                 if (!_.has(attributes, attr)) {
-                    throw "Attribute '" + attr + "' does not exist";
+                    console.warn("Attribute '" + attr + "' does not exist for " + this.cid);
                 }
                 attrs[attr] = ensureType(attributes[attr], attrs[attr]);
             }
@@ -482,7 +482,7 @@
         var oldGet = proto.get;
         childProto.get = function(attr) {
             if (this.namedAttributes && !_.has(this.namedAttributes, attr)) {
-                throw "Attribute '" + attr + "' does not exist";
+                console.warn("Attribute '" + attr + "' does not exist for " + this.cid);
             }
             return oldGet.apply(this, arguments);
         };
@@ -529,5 +529,8 @@
     });
     Evented.extend = Backbone.Model.extend;
     Brace.Evented = applyExtensions(Evented);
+
+    Backbone.View = Brace.View;
+    Backbone.Router = Brace.Router;
 
 }());
