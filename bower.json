@@ -1,0 +1,23 @@
+{
+  "name": "backbone-brace-nytimes-cms",
+  "version": "1.0.0",
+  "homepage": "https://github.com/nytimes-cms/backbone-brace-nytimes-cms",
+  "authors": [
+    "Atlassian",
+    "Min Hur <min.hur@nytimes.com>"
+  ],
+  "description": "Brace is an extension to [Backbone](http://backbonejs.org) that adds mixins and self-documenting attributes & events.",
+  "main": "backbone.brace.js",
+  "keywords": [
+    "backbone",
+    "brace"
+  ],
+  "license": "Apache License, Version 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

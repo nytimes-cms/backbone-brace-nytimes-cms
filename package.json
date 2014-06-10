@@ -1,6 +1,6 @@
 {
-  "name": "backbone-brace",
-  "version": "0.1.0",
+  "name": "backbone-brace-nytimes-cms",
+  "version": "1.0.0",
   "description": "Brace is an extension to [Backbone](http://backbonejs.org) that adds mixins and self-documenting attributes & events.",
   "main": "backbone.brace.js",
   "directories": {
