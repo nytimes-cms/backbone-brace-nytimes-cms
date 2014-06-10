@@ -226,9 +226,6 @@
 				[ [] ],
 				[ [ { red : 1, green : 6 } ], [ new Model({ red : 1, green : 6 }) ] ]
 			]
-			// fail : [
-			// 	[ { red : 1, blue : 6 } ]
-			// ]
 		});
 	});
 
@@ -247,11 +244,6 @@
 				[ [], new Collection() ],
 				[ [ { red : 1, green : 6 } ], new Collection([ new Model({ red : 1, green : 6 }) ]) ]
 			]
-			// fail : [
-			// 	[ { red : 1, blue : 6 } ],
-			// 	new Date(),
-			// 	Brace.Collection.extend()
-			// ]
 		});
 	});
 
