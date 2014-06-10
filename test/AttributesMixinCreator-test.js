@@ -51,37 +51,37 @@ test("ID attribute is not added if model does not specify namedAttributes", func
     ok(!zoolander.setId);
 });
 
-test("Setting namedAttributes that does not exist fails", function() {
+test("Setting namedAttributes that does not exist warns", function() {
     var MaleModel = Brace.Model.extend({
         namedAttributes: ["look"]
     });
 
     var zoolander = new MaleModel();
-    raises(function() {
+    ok(function() {
         zoolander.set({
             mer: "man"
         });
     });
 });
 
-test("Setting attribute that does not exist fails", function() {
+test("Setting attribute that does not exist warns", function() {
     var MaleModel = Brace.Model.extend({
         namedAttributes: ["look"]
     });
 
     var zoolander = new MaleModel();
-    raises(function() {
+    ok(function() {
         zoolander.set("mer", "man");
     });
 });
 
-test("Getting attribute that does not exist fails", function() {
+test("Getting attribute that does not exist warns", function() {
     var MaleModel = Brace.Model.extend({
         namedAttributes: ["look"]
     });
 
     var zoolander = new MaleModel();
-    raises(function() {
+    ok(function() {
         zoolander.get("eugooglize");
     });
 });

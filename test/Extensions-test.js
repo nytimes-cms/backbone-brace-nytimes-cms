@@ -19,7 +19,7 @@ test("BaseModel adds mixin", function() {
     equal(testModelInstance.mixinProperty, "hi");
 });
 
-test("Mixin name clash fails violently on class declaration", function() {
+test("Mixin name clash warns on class declaration", function() {
     var TestMixin1 = {
         mixinProperty: "hi"
     };
@@ -27,7 +27,7 @@ test("Mixin name clash fails violently on class declaration", function() {
         mixinProperty: "hi"
     };
 
-    raises(function() {
+    ok(function() {
         var TestModel = Brace.Model.extend({
             mixins: [TestMixin1, TestMixin2]
         });
