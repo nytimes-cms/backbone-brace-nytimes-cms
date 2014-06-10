@@ -1,6 +1,6 @@
 /*! 
- *  Backbone Brace - 2013-11-07 
- *  Copyright 2013 Atlassian Software Systems Pty Ltd
+ *  Backbone Brace - 2014-06-10 
+ *  Copyright 2014 Atlassian Software Systems Pty Ltd
  *  Licensed under the Apache License, Version 2.0
  */ 
 (function () {
